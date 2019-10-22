@@ -1,0 +1,50 @@
+<form [formGroup]="tmdbForm">
+    <div class="input-group mt-3 mb-3">
+        <div class="input-group-prepend">
+            <select formControlName="type" class="form-control" [ngClass]="{'has-error': f.type.errors }">
+                <option value="">Type de média</option>
+                <option value="movie">Film</option>
+                <option value="tv">Série</option>
+            </select>
+        </div>
+        <input type="text" formControlName="title" placeholder="Titre" class="form-control" [ngClass]="{'has-error': f.title.errors }" (keyup.enter)="onSearch()" />
+        <div *ngIf="f.title.errors" class="invalid-feedback">
+            <div *ngIf="f.title.errors.required">Le titre est requis</div>
+        </div>
+        
+        <div class="input-group-append">
+            <button class="btn btn-success" type="button" (click)="onSearch()">Go</button>
+        </div>
+    </div>  
+    <!-- <div *ngIf="f.type.value != ''">
+        <p>type.value</p>
+    </div> -->
+</form>
+
+<div fxHide.xs class="wrapper card-deck">
+    <div class="card" *ngFor="let result of results">
+        <div class="card-header">{{result.title || result.name || result.original_name }}</div>
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{result.poster_path}}" alt="{{result.title}}">
+        <div class="card-body">
+            {{result.overview}}
+            <p>{{result.media_type}} - {{result.release_date}}</p>
+        </div>
+        <div class="card-footer">
+            <button mat-button matTooltip="Envoi sur le serveur" (click)="open(result)"><i class="material-icons">cloud_upload</i></button>
+        </div>
+    </div>    
+</div>
+
+<div fxHide.gt-xs class="wrapper wrapper-xs card-deck">
+    <div class="card" *ngFor="let result of results">
+        <div class="card-header">{{result.title || result.original_name }}</div>
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{result.poster_path}}" alt="{{result.title}}">
+        <div class="card-body">
+            {{result.overview}}
+            <p>{{result.media_type}} - {{result.release_date}}</p>
+        </div>
+        <div class="card-footer">
+            <button mat-button matTooltip="Envoi sur le serveur" (click)="open(result)"><i class="material-icons">cloud_upload</i></button>
+        </div>
+    </div>    
+</div>

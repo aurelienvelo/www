@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label for="link">Lien à débrider:</label>
+    <input #link placeholder="Votre lien" class="form-control" id="link">
+</div>      
+<button class="btn btn-warning btn-lg" (click)="GetLink(link.value, '')">Lancer le débridage</button>
+    
+<div class="d-flex flex-row p-3">
+    <app-debrideur-detail [link]="lien"></app-debrideur-detail>
+</div>
+
+

@@ -1,0 +1,19 @@
+<!-- <div class="d-flex flex-column bd-highlight mb-4">
+    <div class="p-4 bd-highlight" *ngFor="let file of filesDownload">    
+        <a class="label" href="https://api.velo-nas.ovh/download/{{file._id}}"><p>{{ file.filename }}</p></a>
+        <mat-progress-bar mode="determinate" value="{{file.percent}}"></mat-progress-bar>
+        <a class="close" (click)="removefile(file)">&times;</a>
+    </div>
+</div> -->
+
+
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let file of filesDownload">
+        <a class="label" href="https://api.velo-nas.ovh/api/download/{{file._id}}"><p>{{ file.filename }}</p></a>
+        <ngb-progressbar *ngIf="file.percent==100" showValue="true" type="success" [value]="file.percent"></ngb-progressbar>
+        <ngb-progressbar *ngIf="file.percent!=100" showValue="true" type="info" [value]="file.percent"></ngb-progressbar>
+        <a class="close" (click)="removefile(file)">&times;</a>
+      </li>      
+    </ul>
+</div>

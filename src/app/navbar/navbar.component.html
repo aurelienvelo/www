@@ -1,0 +1,55 @@
+<mat-toolbar color="primary" role="heading" *ngIf="user">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <!-- <div>       
+      <span><img  src="./assets/logo.png"  style="width:50px;"></span>                            
+    </div> -->
+    <div fxFlex fxLayout fxHide.xs>      
+      <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+        <li>
+            <a routerLink="" routerLinkActive="active">Accueil</a>
+        </li>
+        <li>
+            <a routerLink="/messages">Messages</a>
+        </li>
+        <li>
+            <a routerLink="/debrideur">Débrideur</a>
+        </li>
+        <li>
+            <a routerLink="/tmdb">Téléchargement</a>
+        </li>
+      </ul>
+    </div>
+
+    <div fxFlex fxLayout fxHide.xs fxLayoutAlign="flex-end">      
+      <ul fxLayout fxLayoutGap="20px" class="navigation-items"> 
+        <li>
+          <mat-menu #downloadMenu="matMenu" xPosition="before" yPosition="below" >
+              <app-downloader></app-downloader>
+          </mat-menu>  
+          <button mat-icon-button [matMenuTriggerFor]="downloadMenu" class="navigation-items">
+              <mat-icon>cloud_upload</mat-icon>
+          </button>        
+        </li>       
+        <li>
+          <mat-menu #userMenu="matMenu" yPosition="below">
+              <app-card-user></app-card-user>
+              <button mat-menu-item (click)="onEditProfil()">Modifier mon profil</button>
+              <button mat-menu-item (click)="onLogout()">Déconnecter</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="userMenu" class="navigation-items">
+            {{ username }}<mat-icon>more_vert</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
+   
+    <!-- <div fxFlex fxLayout fxHide.xs fxLayoutAlign="flex-end">
+        <button mat-icon-button fxLayout fxLayoutGap="15px" class="navigation-items">
+            <span><mat-icon>more_vert</mat-icon>{{ username }}</span>
+        </button>
+    </div> -->
+</mat-toolbar>

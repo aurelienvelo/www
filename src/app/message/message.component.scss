@@ -1,0 +1,24 @@
+.message-card {
+    max-width: 400px;
+}
+
+.message-header-image {
+    background-image: url('/assets/img/user.png');
+    background-size: cover;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.wrapper-xs {
+    grid-template-columns: repeat(1, 1fr);
+} 
+
+.icone-add {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+} 

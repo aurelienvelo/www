@@ -1,0 +1,34 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Mise à jour du message</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="hidden">
+        <input type="text" formControlName="_id" placeholder="id" name="_id" class="form-control" id="_id">
+        </div>
+
+        <div class="form-group">
+            <label for="title">Titre:</label>
+            <input formControlName="title" placeholder="Titre du message" name="title" class="form-control" id="title">
+        </div>
+        
+        <div class="form-group">
+            <label for="content">Contenu du message:</label>
+            <input type="text" formControlName="content" placeholder="Message" name="content" class="form-control" id="content">
+        </div>
+
+        <div class="form-group">
+            <label for="attachment">Pièce jointe:</label>
+            <input formControlName="attachment" placeholder="Pièce jointe" name="attachment" class="form-control" id="attachment">
+        </div>
+
+        <div class="form-group">
+            <label for="link">Lien:</label>
+            <input type="text" formControlName="link" placeholder="Lien que vous voulez ajouter" name="link" class="form-control" id="link">
+        </div>
+
+        <div class="hidden">
+            <input type="date" formControlName="dateModified" placeholder="dateModified" name="dateModified" class="form-control" id="dateModified">
+        </div>
+  
+        <button class="btn btn-success">Update</button>
+    </form>
+</div>
